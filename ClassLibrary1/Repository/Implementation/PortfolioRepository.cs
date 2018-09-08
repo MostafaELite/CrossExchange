@@ -1,7 +1,9 @@
 using System.Linq;
+using CrossExchange.DataAccess.Repository.Abstraction;
+using CrossExchange.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CrossExchange
+namespace CrossExchange.DataAccess.Repository.Implementation
 {
     public class PortfolioRepository : GenericRepository<Portfolio>, IPortfolioRepository
     {

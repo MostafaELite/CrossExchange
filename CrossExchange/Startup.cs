@@ -1,3 +1,8 @@
+using CrossExchange.Business;
+using CrossExchange.Business.Abstraction;
+using CrossExchange.Business.Implementation;
+using CrossExchange.DataAccess.Repository.Abstraction;
+using CrossExchange.DataAccess.Repository.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +25,16 @@ namespace CrossExchange
         {
             services.AddDbContext<ExchangeContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddTransient<IShareRepository, ShareRepository>();
             services.AddTransient<IPortfolioRepository, PortfolioRepository>();
+            services.AddTransient<BuyHandler>();
+            services.AddTransient<SellHandler>();
             services.AddTransient<ITradeRepository, TradeRepository>();
+            
+            services.AddTransient<ITradeHandlerFactry, TradeHandlerFactry>();
+            
+
             services.AddMvc();
         }
 

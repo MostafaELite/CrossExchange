@@ -1,4 +1,6 @@
-namespace CrossExchange
+using CrossExchange.Models;
+
+namespace CrossExchange.DataAccess.Repository.Implementation
 {
     public class TradeRepository : GenericRepository<Trade>, ITradeRepository
     {

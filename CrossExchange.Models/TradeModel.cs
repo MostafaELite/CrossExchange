@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CrossExchange
+namespace CrossExchange.Models
 {
     public class TradeModel
     {
@@ -16,5 +16,6 @@ namespace CrossExchange
         [Required]
         [RegularExpression("BUY|SELL")]
         public string Action { get; set; }
+        //public TradeAction Action { get; set; }
     }
 }

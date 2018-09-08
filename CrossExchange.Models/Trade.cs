@@ -1,4 +1,4 @@
-﻿namespace CrossExchange
+﻿namespace CrossExchange.Models
 {
     public class Trade
     {
@@ -11,7 +11,9 @@
         public decimal Price { get; set; }       
 
         public int PortfolioId { get; set; }
-        
+
         public string Action { get; set; }
+
+        //public TradeAction Action { get; set; }
     }
 }

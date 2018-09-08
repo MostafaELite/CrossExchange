@@ -1,6 +1,7 @@
-﻿using System.Linq;
+﻿using CrossExchange.Models;
+using System.Linq;
 
-namespace CrossExchange
+namespace CrossExchange.DataAccess.Repository.Abstraction
 {
     public interface IPortfolioRepository : IGenericRepository<Portfolio>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CrossExchange
+namespace CrossExchange.Models
 {
     public class HourlyShareRate
     {

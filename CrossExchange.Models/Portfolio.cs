@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CrossExchange
+namespace CrossExchange.Models
 {
     public class Portfolio
     {
@@ -10,7 +10,8 @@ namespace CrossExchange
         [Required]
         public string Name { get; set; }
         
-        public List<Trade> Trade { get; set; }
+        public virtual List<Trade> Trade { get; set; }
 
+        
     }
 }

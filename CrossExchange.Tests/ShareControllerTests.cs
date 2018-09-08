@@ -4,6 +4,8 @@ using CrossExchange.Controller;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using Moq;
+using CrossExchange.DataAccess.Repository.Abstraction;
+using CrossExchange.Models;
 
 namespace CrossExchange.Tests
 {

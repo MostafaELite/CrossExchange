@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CrossExchange.Business;
+using CrossExchange.Business.Abstraction;
+using CrossExchange.DataAccess.Repository.Abstraction;
+using CrossExchange.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,12 +19,14 @@ namespace CrossExchange.Controller
         private IShareRepository _shareRepository { get; set; }
         private ITradeRepository _tradeRepository { get; set; }
         private IPortfolioRepository _portfolioRepository { get; set; }
+        ITradeHandlerFactry _tradeHandlerFactory;
 
-        public TradeController(IShareRepository shareRepository, ITradeRepository tradeRepository, IPortfolioRepository portfolioRepository)
+        public TradeController(IShareRepository shareRepository, ITradeRepository tradeRepository, IPortfolioRepository portfolioRepository, ITradeHandlerFactry tradeHandlerFactory)
         {
             _shareRepository = shareRepository;
             _tradeRepository = tradeRepository;
             _portfolioRepository = portfolioRepository;
+            _tradeHandlerFactory = tradeHandlerFactory;
         }
 
 
@@ -50,10 +56,13 @@ namespace CrossExchange.Controller
         *************************************************************************************************************************************/
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]TradeModel model)
+        public IActionResult Post([FromBody]TradeModel model)
         {
-            return Created("Trade", model);
+            var handler = _tradeHandlerFactory.GetTradeHandler(model.Action);
+            if (handler.Handle(model))
+                return Created("Trade", model);
+            return BadRequest();
         }
-        
+
     }
 }
